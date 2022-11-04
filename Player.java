@@ -1,6 +1,12 @@
+import java.util.Objects;
+
 public class Player{
-	public static void main(String[] args){
-		System.out.println("Je suis dans la classe Player");
-	}
+	
+  private final String name;
+  
+  public Player(String name) {
+    Objects.requireNonNull(name);
+    this.name = name;
+  }
 }
 
