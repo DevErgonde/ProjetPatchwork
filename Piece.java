@@ -1,4 +1,4 @@
-public record Piece(int buttons, int time, int[][] shape){
+public record Piece(int buttons, int time, boolean[][] shape){
   
   public Piece{
     if (buttons < 0) {

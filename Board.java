@@ -1,36 +1,48 @@
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 
 public class Board{
   
-  enum Elements{
-    Player1Pawn, Player2Pawn, Button, LeatherPiece, Void
-  }
+  private final List<Integer> leatherPieces;
+  private final List<Integer> buttons;
   
-  private final ArrayList<Elements> boardElements;
+  //
+  // Constructeurs
+  //
   
   public Board(int phase){
     if (phase < 1 || phase > 4) {
       throw new IllegalArgumentException("The phase number has to be between 1 and 4");
     }
-    this.boardElements = Board.generateBoardElements(phase);
+    this.leatherPieces = generateLeatherPieces();
+    this.buttons = generateButtons();
   }
   
-  public static ArrayList<Elements> generateBoardElements(int phase){
-    ArrayList<Elements> board = new ArrayList<Elements>();
-    switch(phase) {
-      case 1:
-        for(var i = 0; i <= 53; i++) {
-        }
-      case 2:
-        break;
-      case 3:
-        break;
-      case 4:
-        break;
-      default:
-        return null;
-    }
-    return board;
+  //
+  // Méthodes aidants à l'implémentation dans le constructeur
+  //
+  
+  private static List<Integer> generateLeatherPieces(){
+    return new ArrayList<Integer>(List.of(26, 32, 38, 44, 50));
+  }
+  
+  private static List<Integer> generateButtons(){
+    return List.of(5, 11, 17, 23, 29, 35, 41, 47, 53);
+  }
+  
+  //
+  // Méthodes
+  //
+  
+  //
+  // Accesseurs
+  //
+  
+  public List<Integer> leatherPieces(){
+    return leatherPieces;
+  }
+  
+  public List<Integer> buttons(){
+    return buttons;
   }
 }
