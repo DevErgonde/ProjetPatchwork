@@ -17,19 +17,21 @@ public record Display() {
           }
           else {
             if (game.p1().position() == i && game.p2().position() == i) {
-              System.out.print("12");
+              System.out.print("12 ");
             }
-          }
-        }
-        
-        
-        
-        if (game.p1().position() == i) {
-          System.out.print("1 ");
-        }
-        else {
-          if (game.p2().position() == i) {
-            System.out.print("2 ");
+            else {
+            	if (game.p1().position() == i) {
+                    System.out.print("1 ");
+                  }
+                  else {
+                    if (game.p2().position() == i) {
+                      System.out.print("2 ");
+                    }
+                    else {
+                    	System.out.print("x ");
+                    }
+                  }
+            }
           }
         }
       }
