@@ -9,28 +9,22 @@ public record Display() {
     }
     else {
       for(var i = 0; i <= 53; i++) {
-        if (game.chronoBoard().buttons().contains(i)) {
-          System.out.print("o ");
-        }else {
-          if (game.chronoBoard().leatherPieces().contains(i)) {
-            System.out.print("L ");
-          }
-          else {
-            if (game.p1().position() == i && game.p2().position() == i) {
-              System.out.print("12");
+        switch(i) {
+          case game.p1().position():
+            System.out.print("1");
+            break;
+          case game.p2().position():
+            System.out.print("2");
+            break;
+          default:
+            if (game.chronoBoard().leatherPieces().contains(i)) {
+              System.out.print("L ");
             }
-          }
-        }
-        
-        
-        
-        if (game.p1().position() == i) {
-          System.out.print("1 ");
-        }
-        else {
-          if (game.p2().position() == i) {
-            System.out.print("2 ");
-          }
+            else {
+              if (game.chronoBoard().buttons().contains(i)) {
+                System.out.print("o ");
+              }
+            }
         }
       }
     }
