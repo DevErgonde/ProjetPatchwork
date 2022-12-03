@@ -14,11 +14,17 @@ public class QuiltBoard {
 		grid[coord.x()][coord.y()] = true;
 	}
 	
-	public void placePiece(Piece piece, Coord origin) {
+	public int placePiece(Piece piece, Coord origin) {
 		var coordlist = piece.pieceCoordinates(origin);
 		for( var c : coordlist) {
-			placeAtCoord(c);
+			if(grid[c.x()][c.y()] == false) {
+				placeAtCoord(c);
+			}
+			else {
+				return 1;
+			}
 		}
+		return 0;
 	}
 	
 	public int BlankSpaces() {
