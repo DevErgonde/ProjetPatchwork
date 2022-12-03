@@ -10,8 +10,14 @@ public class QuiltBoard {
 		this.grid = new boolean[9][9];
 	}
 	
-	public void placeAtCoord(Coord coord) {
-		grid[coord.x()][coord.y()] = true;
+	public int placeAtCoord(Coord coord) {
+		if(grid[coord.x()][coord.y()] == false) {
+			grid[coord.x()][coord.y()] = true;
+			return 0;
+		}
+		else {
+			return 1;
+		}
 	}
 	
 	public int placePiece(Piece piece, Coord origin) {
