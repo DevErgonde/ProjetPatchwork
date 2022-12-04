@@ -1,6 +1,9 @@
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Class for the gestion of the information of a player
+ */
 public class Player{
 	
   private final String name;
@@ -26,6 +29,11 @@ public class Player{
   // Méthodes
   //
 	
+    /**
+     * Place a square on the quilt board
+     * @param coord : Coordinates where the square must be placed
+     * @return : 0 if the square was successfully placed, 1 if the space was already occupied
+     */
 	public int placeAtCoord(Coord coord) {
 		if(grid[coord.x()][coord.y()] == false) {
 			grid[coord.x()][coord.y()] = true;
@@ -36,6 +44,12 @@ public class Player{
 		}
 	}
 	
+	/**
+	 * Place a leather piece on the quilt board
+	 * @param piece : The leather piece that will be placed
+	 * @param origin : The top left corner of the leather piece
+	 * @return ! 0 if the piece was successfully placed, 1 if the board was obstructed
+	 */
 	public int placePiece(Piece piece, Coord origin) {
 		var coordlist = piece.pieceCoordinates(origin);
 		for( var c : coordlist) {
@@ -49,6 +63,10 @@ public class Player{
 		return 0;
 	}
 	
+	/**
+	 * Calculate how many blank spaces there are on the quilt board
+	 * @return : The number of blank spaces
+	 */
 	public int BlankSpaces() {
 		var count = 0;
 		for(var tab : grid) {
@@ -104,4 +122,5 @@ public class Player{
 	  this.score = score;
   }
 }
+
 
