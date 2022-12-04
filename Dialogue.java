@@ -13,8 +13,14 @@ public record Dialogue(Scanner scan) {
     }
   }
   
-  public String scanString() {
-    return scan.next();
+  public boolean scanBoolean() {
+    try {
+      return scan.nextBoolean();
+    }catch(InputMismatchException e) {
+      e.getMessage();
+      System.out.println("Veuillez entrer un booléen.");
+      return scanBoolean();
+    }
   }
   
   public int askActionChoices() {
@@ -37,12 +43,35 @@ public record Dialogue(Scanner scan) {
     return choice;
   }
   
+  public int askPieceOrientation() {
+    int choice;
+    do {
+      System.out.println("Si vous voulez faire tourner la pièce (dans le sens des aiguilles d'une montre)\n"
+          + ", entrez le nombre de rotations voulu. (0 à 3).");
+      choice = scanInt();
+    }while(choice < 0 || choice > 3);
+    return choice;
+  }
+  
+  public boolean askPieceReverse() {
+    System.out.println("Si vous voulez effectuer un effet miroir sur la pièce, entrez true. Sinon entrez false.");
+    return scanBoolean();
+  }
+  
+  public void closeDialogue() {
+    scan.close();
+  }
+  
   public boolean exitAction() {
     System.out.println("Entrez 'q' pour quitter et revenir au menu des actions.");
     return (scan.next() == "q");
   }
   
-  public void closeDialogue() {
-    scan.close();
+  public void exitDisplay() {
+    String choice;
+    System.out.println("Entrez 'q' pour quitter et revenir au menu des actions.");
+    do{
+      choice = scan.next();
+    }while (choice != "q");
   }
 }
