@@ -1,12 +1,21 @@
 import java.util.Objects;
 
+/**
+ * Class for the gestion of what the terminal displays
+ */
 public record Display() {
   
+  /**
+   * Clears the terminal
+   */
   public static void clearScreen() {
     System.out.print("\u001b[2J");
     System.out.flush();
   }
   
+  /**
+   * Displays the actions menu
+   */
   public static void displayActionsChoices() {
     clearScreen();
     System.out.println("********************************************");
@@ -21,6 +30,10 @@ public record Display() {
     System.out.println("********************************************");
   }
   
+  /**
+   * Displays the current Chronoboard
+   * @param game : Current game
+   */
   public static void displayChronoBoard(Game game) {
     Objects.requireNonNull(game);
     clearScreen();
@@ -53,6 +66,10 @@ public record Display() {
     }
   }
   
+  /**
+   * Displays player p's quilt board
+   * @param p : Player associated with the quilt board
+   */
   public static void displayGrid(Player p) {
     Objects.requireNonNull(p);
     clearScreen();
@@ -67,6 +84,10 @@ public record Display() {
     }
   }
   
+  /**
+   * Displays the current list of pieces available
+   * @param game : Current game
+   */
   public static void displayPieces(Game game) {
     Objects.requireNonNull(game, "The Game object is null in displayPieces !");
     clearScreen();
