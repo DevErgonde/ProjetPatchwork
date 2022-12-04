@@ -58,6 +58,15 @@ public class Player{
 		}
 		return count;
 	}
+	
+	public void endScore() {
+		this.setScore(this.buttons() - 2* this.BlankSpaces());
+	}
+	
+	public void gainButtons(int gain) {
+		this.setButtons(buttons + gain);
+	}
+
 
   //
   // Accesseurs
@@ -87,12 +96,12 @@ public class Player{
   // Setters
   //
   
-  public void gainButtons(int gain) {
-	  this.buttons += gain;
+  public void setButtons(int value) {
+	  this.buttons = value;
   }
   
-  public void setScore() {
-	  this.score = this.buttons - (this.BlankSpaces() * 2)
+  public void setScore(int score) {
+	  this.score = score;
   }
 }
 
