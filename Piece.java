@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+ * Record containing the informations of a leather piece
+ */
 public record Piece(int price, int time, int buttons, boolean[][] shape){
   
   public Piece{
@@ -17,6 +20,11 @@ public record Piece(int price, int time, int buttons, boolean[][] shape){
     }
   }
   
+  /**
+   * Generate a list of all the coordinates of the leather piece
+   * @param origin : top left corner of the piece
+   * @return A list of the coordinates of each squares that constitute the piece
+   */
   public ArrayList<Coord> pieceCoordinates(Coord origin){
 	  var coordlist = new ArrayList<Coord>();
 	  for(var i = 0; i < shape.length; i++) {
