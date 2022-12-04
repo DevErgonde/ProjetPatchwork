@@ -97,3 +97,4 @@ public record Dialogue(Scanner scan) {
     System.out.println("Si vous voulez effectuer un effet miroir sur la pièce, entrez true. Sinon entrez false.");
     return scanBoolean();
   }
+}
