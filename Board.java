@@ -63,13 +63,14 @@ public class Board{
     if(pawn != Element.PAWN1 && pawn != Element.PAWN2) {
       throw new IllegalArgumentException("Only a pawn can be moved");
     }
-    Element arrivée;
+    player.gainButtons(distance);
     switch(pawn) {
       case PAWN1:
-        arrivée = boardElements.get(pawn1Position + distance);
-        if(arrivée == Element.BUTTON) {
-          player.gainButtons(1);
-        }
+    	for(var i = pawn1Position; i < pawn1Position + distance; i++) {
+    		if(boardElements.get(i) == Element.BUTTON) {
+    			player.gainButtons(1);
+    		}
+    	}
         boardElements.remove(pawn1Position);
         if(pawn1Position == pawn2Position) {
           boardElements.put(pawn1Position,Element.PAWN2);
@@ -85,10 +86,11 @@ public class Board{
         break;
         
       case PAWN2:
-        arrivée = boardElements.get(pawn2Position + distance);
-        if(arrivée == Element.BUTTON) {
-          player.gainButtons(1);
-        }
+    	for(var i = pawn2Position; i < pawn2Position + distance; i++) {
+      		if(boardElements.get(i) == Element.BUTTON) {
+      			player.gainButtons(1);
+      		}
+      	}
         boardElements.remove(pawn2Position);
         
         if(pawn1Position == pawn2Position) {
