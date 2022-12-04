@@ -44,12 +44,17 @@ public class Board{
   // Méthodes
   //
   
-  public void movePawn(int distance, Element pawn) {
+  public void movePawn(int distance, Element pawn, Player player) {
 	  if(pawn != Element.PAWN1 && pawn != Element.PAWN2) {
 		  throw new IllegalArgumentException("Only a pawn can be moved");
 	  }
+	  Element arrivée;
 	  switch(pawn) {
 	  	case PAWN1:
+	  		arrivée = boardElements.get(Pawn1position + distance);
+	  		if(arrivée == Element.BUTTON) {
+	  			player.gainButtons(1);
+	  		}
 	  		boardElements.remove(Pawn1position);
 	  		if(Pawn1position == Pawn2position) {
 	  			boardElements.put(Pawn1position,Element.PAWN2);
@@ -65,7 +70,12 @@ public class Board{
 	  		break;
 	  		
 	  	case PAWN2:
+	  		arrivée = boardElements.get(Pawn2position + distance);
+	  		if(arrivée == Element.BUTTON) {
+	  			player.gainButtons(1);
+	  		}
 	  		boardElements.remove(Pawn2position);
+	  		
 	  		if(Pawn1position == Pawn2position) {
 	  			boardElements.put(Pawn1position,Element.PAWN1);
 	  		}
