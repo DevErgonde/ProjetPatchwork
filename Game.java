@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Main class for the gestion of the current game
+ */
 public class Game{
   
   private final boolean mode; // Mode graphique (true) ascii (false)
@@ -48,6 +51,10 @@ public class Game{
   // Méthodes aidants à l'implémentation dans le constructeur
   //
   
+  /**
+   * Generate the starting list of leather pieces
+   * @return the list of pieces
+   */
   private ArrayList<Piece> generatePieces (){
     var pieces = new ArrayList<Piece>();
     switch(phase) {
@@ -71,7 +78,12 @@ public class Game{
   // Méthodes
   //
   
-  public static void Gains(Player player, Board board, Piece piece) {
+  /**
+   * Gives the amount of buttons displayed on the leather piece to the designated player
+   * @param player : Designated player
+   * @param piece : The leather piece from which the buttons are taken
+   */
+  public static void Gains(Player player, Piece piece) {
 	  player.gainButtons(piece.buttons());
   }
   
