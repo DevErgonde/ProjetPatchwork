@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Objects;
 
 public record Display() {
@@ -24,6 +23,7 @@ public record Display() {
   
   public static void displayChronoBoard(Game game) {
     Objects.requireNonNull(game);
+    clearScreen();
     for(var i = 0; i <= 53; i++) {
       
       var element = game.chronoBoard().boardElements().get(i);
@@ -51,5 +51,35 @@ public record Display() {
         }
       }
     }
+  }
+  
+  public static void displayGrid(Player p) {
+    Objects.requireNonNull(p);
+    clearScreen();
+    for(var ligne : p.grid()) {
+      for (var cases : ligne) {
+        if (cases)
+          System.out.print("O");
+        else
+          System.out.print(".");
+      }
+      System.out.println("");
+    }
+  }
+  
+  public static void displayPieces(Game game) {
+    Objects.requireNonNull(game, "The Game object is null in displayPieces !");
+    clearScreen();
+    for (var i = 0; i < game.pieces().size(); i++) {
+      System.out.println(Integer.toString(i + 1) + ". " + game.pieces().get(i).toString()); 
+    } 
+  }
+  
+  public static void displayPlayablePieces(Game game) {
+    Objects.requireNonNull(game, "The Game object is null in displayPlayablePieces !");
+    clearScreen();
+    for (var i = 0; i < 3; i++) {
+      System.out.println(Integer.toString(i + 1) + ". " + game.pieces().get(i).toString()); 
+    } 
   }
 }
