@@ -2,20 +2,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Enumeration for the different elements of the game
+ */
 enum Element {
   PAWN1, PAWN2, PAWNS, LEATHER, BUTTON
 }
 
+/**
+ * Class reprensenting every element on the board, and the position of the players's pawns
+ */
 public class Board{
   
   private final Map<Integer, Element> boardElements;
   private int pawn1Position;
   private int pawn2Position;
   
-  //
-  // Constructeurs
-  //
-  
+
+  /**
+   * Constructor
+   * 
+   * @param phase phase of the game, from 1 to 4
+   */
   public Board(int phase){
     if (phase < 1 || phase > 4) {
       throw new IllegalArgumentException("The phase number has to be between 1 and 4");
@@ -44,6 +52,13 @@ public class Board{
   // Méthodes
   //
   
+  /**
+   * Move a given pawn of a player based on the distance
+   * 
+   * @param distance Distance to move the pawn
+   * @param pawn Given pawn
+   * @param player Active player
+   */
   public void movePawn(int distance, Element pawn, Player player) {
     if(pawn != Element.PAWN1 && pawn != Element.PAWN2) {
       throw new IllegalArgumentException("Only a pawn can be moved");
