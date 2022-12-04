@@ -82,5 +82,17 @@ public class Player{
   public int score() {
     return score;
   }
+	
+  //
+  // Setters
+  //
+  
+  public void gainButtons(int gain) {
+	  this.buttons += gain;
+  }
+  
+  public void setScore() {
+	  this.score = this.buttons - (this.BlankSpaces() * 2)
+  }
 }
 
