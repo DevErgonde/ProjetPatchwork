@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public record Piece(int buttons, int time, boolean[][] shape){
+public record Piece(int price, int time, int buttons, boolean[][] shape){
   
   public Piece{
     if (buttons < 0) {
@@ -9,6 +9,9 @@ public record Piece(int buttons, int time, boolean[][] shape){
     if (time < 0) {
       throw new IllegalArgumentException("The time number of the template can't be negativ.");
     }
+    if (price < 0) {
+        throw new IllegalArgumentException("The button price of the template can't be negativ.");
+      }
     if (shape.length == 0) {
       throw new IllegalArgumentException("The shape of the template can't be empty");
     }
