@@ -9,8 +9,8 @@ enum Element {
 public class Board{
   
   private final Map<Integer, Element> boardElements;
-  private int Pawn1position;
-  private int Pawn2position;
+  private int pawn1Position;
+  private int pawn2Position;
   
   //
   // Constructeurs
@@ -32,8 +32,8 @@ public class Board{
     
     boardElements.put(0, Element.PAWNS);
     
-    Pawn1position = 0;
-    Pawn2position = 0;
+    pawn1Position = 0;
+    pawn2Position = 0;
   }
   
   //
@@ -45,52 +45,52 @@ public class Board{
   //
   
   public void movePawn(int distance, Element pawn, Player player) {
-	  if(pawn != Element.PAWN1 && pawn != Element.PAWN2) {
-		  throw new IllegalArgumentException("Only a pawn can be moved");
-	  }
-	  Element arrivée;
-	  switch(pawn) {
-	  	case PAWN1:
-	  		arrivée = boardElements.get(Pawn1position + distance);
-	  		if(arrivée == Element.BUTTON) {
-	  			player.gainButtons(1);
-	  		}
-	  		boardElements.remove(Pawn1position);
-	  		if(Pawn1position == Pawn2position) {
-	  			boardElements.put(Pawn1position,Element.PAWN2);
-	  		}
-	  		Pawn1position += distance;
-	  		if(Pawn1position == Pawn2position) {
-	  			boardElements.remove(Pawn1position);
-	  			boardElements.put(Pawn1position, Element.PAWNS);
-	  		}
-	  		else {
-	  			boardElements.put(Pawn1position, pawn);
-	  		}
-	  		break;
-	  		
-	  	case PAWN2:
-	  		arrivée = boardElements.get(Pawn2position + distance);
-	  		if(arrivée == Element.BUTTON) {
-	  			player.gainButtons(1);
-	  		}
-	  		boardElements.remove(Pawn2position);
-	  		
-	  		if(Pawn1position == Pawn2position) {
-	  			boardElements.put(Pawn1position,Element.PAWN1);
-	  		}
-	  		Pawn2position += distance;
-	  		if(Pawn1position == Pawn2position) {
-	  			boardElements.remove(Pawn1position);
-	  			boardElements.put(Pawn1position, Element.PAWNS);
-	  		}
-	  		else {
-	  			boardElements.put(Pawn2position, pawn);
-	  		}
-	  		break;
-	  	default:
-	  		break;
-	  }
+    if(pawn != Element.PAWN1 && pawn != Element.PAWN2) {
+      throw new IllegalArgumentException("Only a pawn can be moved");
+    }
+    Element arrivée;
+    switch(pawn) {
+      case PAWN1:
+        arrivée = boardElements.get(pawn1Position + distance);
+        if(arrivée == Element.BUTTON) {
+          player.gainButtons(1);
+        }
+        boardElements.remove(pawn1Position);
+        if(pawn1Position == pawn2Position) {
+          boardElements.put(pawn1Position,Element.PAWN2);
+        }
+        pawn1Position += distance;
+        if(pawn1Position == pawn2Position) {
+          boardElements.remove(pawn1Position);
+          boardElements.put(pawn1Position, Element.PAWNS);
+        }
+        else {
+          boardElements.put(pawn1Position, pawn);
+        }
+        break;
+        
+      case PAWN2:
+        arrivée = boardElements.get(pawn2Position + distance);
+        if(arrivée == Element.BUTTON) {
+          player.gainButtons(1);
+        }
+        boardElements.remove(pawn2Position);
+        
+        if(pawn1Position == pawn2Position) {
+          boardElements.put(pawn1Position,Element.PAWN1);
+        }
+        pawn2Position += distance;
+        if(pawn1Position == pawn2Position) {
+          boardElements.remove(pawn1Position);
+          boardElements.put(pawn1Position, Element.PAWNS);
+        }
+        else {
+          boardElements.put(pawn2Position, pawn);
+        }
+        break;
+      default:
+        break;
+    }
   }
   
   //
@@ -99,5 +99,13 @@ public class Board{
   
   public Map<Integer, Element> boardElements(){
     return boardElements;
+  }
+  
+  public int pawn1Position() {
+    return pawn1Position;
+  }
+  
+  public int pawn2Position() {
+    return pawn2Position;
   }
 }
