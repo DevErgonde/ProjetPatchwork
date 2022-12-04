@@ -53,25 +53,27 @@ public class Game{
     switch(phase) {
       case 1:
         for(var i = 0; i < 20; i ++) {
-          pieces.add(new Piece(3, 4, new boolean[][]{{true, true}, {true, true}}));
-          pieces.add(new Piece(2, 2, new boolean[][]{{true, true}, {true, true}}));
+          pieces.add(new Piece(3, 4, 1, new boolean[][]{{true, true}, {true, true}}));
+          pieces.add(new Piece(2, 2, 0, new boolean[][]{{true, true}, {true, true}}));
         }
       case 2:
-        break;
+        Game.generatePhase2Pieces(pieces);
       case 3:
-        break;
+        return null;
       case 4:
-        break;
+        return null;
       default:
         throw new IllegalArgumentException("The phase number has to be between 1 and 4");
     }
-    
-    return pieces;
   }
   
   //
   // Méthodes
   //
+  
+  public static void Gains(Player player, Board board, Piece piece) {
+	  player.gainButtons(piece.buttons());
+  }
   
   //
   // Accesseurs
@@ -99,5 +101,46 @@ public class Game{
   
   public Board chronoBoard() {
     return chronoBoard;
+  }
+  
+  //
+  // Monstruosité
+  //
+  
+  private static void generatePhase2Pieces(ArrayList<Piece> pieces) {
+	  pieces.add(new Piece(2, 2, 0, new boolean[][]{{true,true,true}}));
+      pieces.add(new Piece(2, 3, 0, new boolean[][]{{true,true,true},{false,true,false},{true,true,true}}));
+      pieces.add(new Piece(2,1,0,new boolean[][]{{false,true,false},{true,true,false},{false,true,true},{false,true,false}}));
+      pieces.add(new Piece(2,2,0,new boolean[][] {{true,true},{true,true},{false,true}}));
+      pieces.add(new Piece(1,2,0,new boolean[][] {{true,true},{true,false},{true,true}}));
+      pieces.add(new Piece(1,3,0,new boolean[][] {{true,true},{false,true}}));
+      pieces.add(new Piece(1,2,0,new boolean[][] {{false,true,true},{false,true,false},{false,true,false},{true,true,false}}));
+      pieces.add(new Piece(4, 2, 0, new boolean[][]{{true,true,true,false},{false,true,true,true}}));
+      pieces.add(new Piece(2, 2, 0, new boolean[][]{{true,true,true},{false,true,false}}));
+      pieces.add(new Piece(3, 1, 0, new boolean[][]{{false,true},{true,true}}));
+      pieces.add(new Piece(3, 4, 1, new boolean[][]{{true,false},{true,false},{true,true},{true,false}}));
+      pieces.add(new Piece(0, 3, 1, new boolean[][]{{false,false,true,false},{true,true,true,true},{false,false,true,false}}));
+      pieces.add(new Piece(1, 4, 1, new boolean[][]{{false,false,true,false,false},{true,true,true,true,true},{false,false,true,false,false}}));
+      pieces.add(new Piece(3,2,1,new boolean[][] {{false,true},{true,true},{true,false}}));
+      pieces.add(new Piece(5,3,1,new boolean[][] {{false,true,false},{true,true,true},{true,true,true},{false,true,false}}));
+      pieces.add(new Piece(4,2,1,new boolean[][] {{true,false},{true,false},{true,true}}));
+      pieces.add(new Piece(1,5,1,new boolean[][] {{true,false,false,true},{true,true,true,true}}));
+      pieces.add(new Piece(7,1,1,new boolean[][] {{true,true,true,true,true}}));
+      pieces.add(new Piece(10,3,2,new boolean[][] {{true,false},{true,false},{true,false},{true,true}}));
+      pieces.add(new Piece(7, 2, 2, new boolean[][]{{true,false,false,false},{true,true,true,true},{true,false,false,false}}));
+      pieces.add(new Piece(3,3,1,new boolean[][] {{true,true,true,true}}));
+      pieces.add(new Piece(2,3,1,new boolean[][] {{false,true,true,true},{true,true,false,false}}));
+      pieces.add(new Piece(5,5,2,new boolean[][] {{false,false,true},{true,true,true},{false,false,true}}));
+      pieces.add(new Piece(3,6,2,new boolean[][] {{true,true,false},{false,true,true},{true,true,false}}));
+      pieces.add(new Piece(5,4,2,new boolean[][] {{false,true,false},{true,true,true},{false,true,false}}));
+      pieces.add(new Piece(10,5,3,new boolean[][] {{true,true},{true,true},{false,true},{false,true}}));
+      pieces.add(new Piece(7,4,2,new boolean[][] {{true,false},{true,true},{true,true},{true,false}}));
+      pieces.add(new Piece(6,5,2,new boolean[][] {{true,true},{true,true}}));
+      pieces.add(new Piece(7,6,3,new boolean[][] {{true,true,false},{false,true,true}}));
+      pieces.add(new Piece(10,4,3,new boolean[][] {{false,false,true},{false,true,true},{true,true,false}}));
+      pieces.add(new Piece(4,6,2,new boolean[][] {{false,false,true},{true,true,true}}));
+      pieces.add(new Piece(8,6,3,new boolean[][] {{false,false,true},{true,true,true},{true,true,false}}));
+      pieces.add(new Piece(2,1,0,new boolean[][] {{true,true}}));
+      /* Ne vous inquietes pas, cette horreur ne sera plus là au rendu final */
   }
 }
