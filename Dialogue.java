@@ -1,8 +1,19 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * 
+ * Class util to dialogue with humans
+ * Uses a Scanner to read the input
+ * 
+ */
 public record Dialogue(Scanner scan) {
   
+  /**
+   * Retrieve the next int on the scan input, write an error message and retry the scan otherwise
+   * 
+   * @return int writed on the input
+   */
   public int scanInt() {
     try {
       return scan.nextInt();
@@ -13,6 +24,11 @@ public record Dialogue(Scanner scan) {
     }
   }
   
+  /**
+   * Retrieve the boolean on the scan input, write an error message and retry the scan otherwise
+   * 
+   * @return boolean writed on the input
+   */
   public boolean scanBoolean() {
     try {
       return scan.nextBoolean();
@@ -23,6 +39,12 @@ public record Dialogue(Scanner scan) {
     }
   }
   
+  /**
+   * Ask for a choice to the players
+   * Retrieve the choice given on the scan input. The choice is an int of range 1 to 6 included
+   * 
+   * @return int of range 1 to 6 included
+   */
   public int askActionChoices() {
     int choice;
     do {
@@ -33,6 +55,12 @@ public record Dialogue(Scanner scan) {
     return choice;
   }
   
+  /**
+   * Ask a piece to the players
+   * Retrieve the piece given on the scan input. The choice is an int of range 1 to 3 included
+   * 
+   * @return int of range 1 to 3 included
+   */
   public int askPieceChoice() {
     int choice;
     do {
@@ -43,6 +71,12 @@ public record Dialogue(Scanner scan) {
     return choice;
   }
   
+  /**
+   * Ask the piece orientation to the players
+   * Retrieve the piece orientation given on the scan input. The choice is an int of range 0 to 3 included
+   * 
+   * @return int of range 0 to 3 included
+   */
   public int askPieceOrientation() {
     int choice;
     do {
@@ -53,25 +87,13 @@ public record Dialogue(Scanner scan) {
     return choice;
   }
   
+  /**
+   * Ask the player if they want to reverse the piece
+   * Retrieve the choice of a player by a boolean
+   * 
+   * @return boolean - answer of the player
+   */
   public boolean askPieceReverse() {
     System.out.println("Si vous voulez effectuer un effet miroir sur la pièce, entrez true. Sinon entrez false.");
     return scanBoolean();
   }
-  
-  public void closeDialogue() {
-    scan.close();
-  }
-  
-  public boolean exitAction() {
-    System.out.println("Entrez 'q' pour quitter et revenir au menu des actions.");
-    return (scan.next() == "q");
-  }
-  
-  public void exitDisplay() {
-    String choice;
-    System.out.println("Entrez 'q' pour quitter et revenir au menu des actions.");
-    do{
-      choice = scan.next();
-    }while (choice != "q");
-  }
-}
