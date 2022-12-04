@@ -1,0 +1,2 @@
+1. Choix d'implémentation position des pions : On a deux champs position dans Board.java, et on a dans le HashMap dans Board.java qui a en clé la position de la case et en valeur l'élement.
+    Est-ce judicieux d'avoir une redondance dans les données comme ça ?
