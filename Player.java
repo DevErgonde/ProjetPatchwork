@@ -4,11 +4,10 @@ import java.util.Objects;
 public class Player{
 	
   private final String name;
-  private final int buttons;
-  private final int score;
   private final HashMap<Piece, Coord> pieces;
-  private final int position;
   private final boolean[][] grid;
+  private int buttons;
+  private int score;
   
   //
   // Constructeurs
@@ -17,11 +16,10 @@ public class Player{
   public Player(String name) {
     Objects.requireNonNull(name);
     this.name = name;
+    this.pieces = new HashMap<Piece, Coord>();
+    this.grid = new boolean[9][9];
     this.buttons = 0;
     this.score = 0;
-    this.pieces = new HashMap<Piece, Coord>();
-    this.position = 0;
-    this.grid = new boolean[9][9];
   }
   
   //
@@ -68,6 +66,14 @@ public class Player{
   public String name() {
     return name;
   }
+
+  public HashMap<Piece, Coord> pieces(){
+    return pieces;
+  }
+  
+  public boolean[][] grid(){
+    return grid;
+  }
   
   public int buttons() {
     return buttons;
@@ -75,14 +81,6 @@ public class Player{
   
   public int score() {
     return score;
-  }
-  
-  public HashMap<Piece, Coord> pieces(){
-    return pieces;
-  }
-  
-  public int position() {
-    return position;
   }
 }
 
