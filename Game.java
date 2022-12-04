@@ -57,14 +57,16 @@ public class Game{
           pieces.add(new Piece(2, 2, new boolean[][]{{true, true}, {true, true}}));
         }
       case 2:
-        return null;
+        break;
       case 3:
-        return null;
+        break;
       case 4:
-        return null;
+        break;
       default:
         throw new IllegalArgumentException("The phase number has to be between 1 and 4");
     }
+    
+    return pieces;
   }
   
   //
