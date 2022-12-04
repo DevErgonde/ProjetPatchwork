@@ -7,7 +7,6 @@ public class Player{
   private final int buttons;
   private final int score;
   private final HashMap<Piece, Coord> pieces;
-  private final int position;
   
   //
   // Constructeurs
@@ -19,7 +18,6 @@ public class Player{
     this.buttons = 0;
     this.score = 0;
     this.pieces = new HashMap<Piece, Coord>();
-    this.position = 0;
   }
   
   //
@@ -44,10 +42,6 @@ public class Player{
   
   public HashMap<Piece, Coord> pieces(){
     return pieces;
-  }
-  
-  public int position() {
-    return position;
   }
 }
 
