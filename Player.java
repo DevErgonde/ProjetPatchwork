@@ -53,12 +53,12 @@ public class Player{
 	public int placePiece(Piece piece, Coord origin) {
 		var coordlist = piece.pieceCoordinates(origin);
 		for( var c : coordlist) {
-			if(grid[c.x()][c.y()] == false) {
-				placeAtCoord(c);
-			}
-			else {
+			if(grid[c.x()][c.y()] == true) {
 				return 1;
 			}
+		}
+		for( var c : coordlist) {
+			placeAtCoord(c);
 		}
 		return 0;
 	}
